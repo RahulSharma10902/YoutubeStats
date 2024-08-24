@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VidStats</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    :root{
+      --primary-color:#6366F1;
+      --accent_color:#3f83f8;
+      --text-color:#333333;
+      --link-color:#2563eb;
+      --background-color:#ffffff;
+      --light-gray:#f0f0f0;
+      --gray:#808080;
+      --dark-gray:#555;
+    }
+        .stats-cont{
+            height:80vh;
+            padding:2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .stats-card{
+            width:80%;
+            height:90%;
+            border:none;
+            box-shadow: 0px 8px 16px var(--dark-gray);
+            text-align: center;
+            padding:2rem;
+            border-radius: 1rem;
+            color:var(--primary-color);
+            display: flex;
+            flex-direction: column;
+            /* justify-content: center; */
+            align-items: center;
+        }
+        .row1{
+            height:50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            margin-top: 50px;
+        }
+        .box{
+            width:20%;
+            height:70%;
+            /* border:2px solid red; */
+            border-radius: 1rem;
+            box-shadow: 0px 4px 8px var(--gray);
+            display: flex;
+            flex-direction: column;
+            color: var(--background-color);
+            padding:10px;
+            font-size: 16px;
+            font-weight: bold;
+            overflow-wrap: break-word;
+        }
+        .box-text{
+            margin-bottom: 3px;
+        }
+        #box1{
+            background-color: #880848;
+        }
+        #box2{
+            background-color: rgb(206, 129, 29);
+        }
+        #box3{
+            background-color: rgb(27, 163, 118);
+        }
+        #box4{
+            background-color: rgb(101, 15, 182);
+        }
+        #box5{
+            background-color: rgb(43, 87, 43);
+        }
+        #box6{
+            background-color: rgb(102, 34, 34);
+        }
+        @media screen and (min-width:768){
+            .stats-card{
+                height:80%;
+                width:60%;
+            }
+            .row1{
+               flex-direction: column; 
+               align-items: center;
+               justify-content: center;
+            }
+            .box{
+                width:30%;
+                height:80%;
+                font-size: 12px;
+            }
+        }
+        Button{
+            width:60px;
+            height:30px;
+            background-color: var(--accent_color);
+            align-content: center;
+            border-radius: .2rem;
+            cursor:pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        Button:hover{
+            background-color: var(--link-color);
+            
+        }
+        #tttt{
+            
+            background-color: var(--accent_color);
+            /* align-items: center; */
+            border-radius: .65rem;
+            
+            margin-top: 20px;
+        }
+        hr{
+            margin:3px 0;
+        }
+        .sentiment{
+            margin-top: 10px ;
+            color: var(--text-color);
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .sentiment a{
+            color:var(--accent_color);
+        }
+        .sentiment a:hover{
+            color:var(--link-color
+            )
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="stats-cont">
+        <div class="stats-card">
+            <h2>Video Stats</h2>
+            <div class="row1">
+                <div class="box" id="box1">
+                    <p class="box-text">Channel Name</p>
+                    <hr>
+                    <span class="box-val">{{info.channel_name}}</span>
+                </div>
+                <div class="box" id="box2">
+                    <p class="box-text">Channel ID</p>
+                    <hr>
+                    <span class="box-val">{{info.channel_id}}</span>
+                </div>
+                <div class="box" id="box3">
+                    <p class="box-text">Video Title</p>
+                    <hr>
+                    <span class="box-val">{{info.title}}</span>
+                </div>
+            </div>
+            <div class="row1">
+                <div class="box" id="box4">
+                    <p class="box-text">View Count</p>
+                    <hr>
+                    <span class="box-val">{{info.view_count}}</span>
+                </div>
+                <div class="box" id="box5">
+                    <p class="box-text">Like Count</p>
+                    <hr>
+                    <span class="box-val">{{info.like_count}}</span>
+                </div>
+                <div class="box" id="box6">
+                    <p class="box-text">Comment Count</p>
+                    <hr>
+                    <span class="box-val">{{info.comment_count}}</span>
+                </div>
+            </div>
+            <a href="http://127.0.0.1:8000/home/" class="tttt"><Button >Back</Button></a>
+            <p class="sentiment">To Get Sentiment Analysis <a href="http://127.0.0.1:8000/sentiment/">Click Here!</a></p>
+        </div>
+        
+    </div>
+    {%include 'footer.html' %}
+</body>
+</html>
