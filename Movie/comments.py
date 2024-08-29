@@ -1,10 +1,10 @@
 from django.conf import settings
-# import requests
-# import json
-# import os
 from textblob import TextBlob
-
 import googleapiclient.discovery
+from django.core.mail import send_mail
+from MovieReview import settings
+from .models import User
+import random
 
 def get_video_details(video_id):
         youtube = googleapiclient.discovery.build("youtube", "v3", developerKey="AIzaSyBN0j5kuM_y_l0Gd8uI68XsBjWHNy1qz2E")
@@ -15,9 +15,7 @@ def get_video_details(video_id):
 
 def info(video_id):
     try:
-        print(video_id)
         video_info = get_video_details(video_id)
-        # print(video_info['items'])
         if 'items' in video_info and video_info['items']:
             item=video_info['items'][0]
             stats=item['statistics']
@@ -38,12 +36,12 @@ def info(video_id):
 
 def senti(video_id):
     try:    
-        youtube = googleapiclient.discovery.build("youtube", "v3", developerKey="AIzaSyBN0j5kuM_y_l0Gd8uI68XsBjWHNy1qz2E")
+        youtube =googleapiclient.discovery.build("youtube", "v3", developerKey="AIzaSyBN0j5kuM_y_l0Gd8uI68XsBjWHNy1qz2E")
         request= youtube.commentThreads().list(
             part='snippet,replies',
             videoId=video_id,
             textFormat='plainText',
-            maxResults=100
+            maxResults=1000
         )
         comments=[]
         video_response=request.execute()
@@ -54,7 +52,6 @@ def senti(video_id):
         return []
 
 def sentAnal(video_id):
-     
      posi=0
      negi=0
      neut=0
@@ -77,6 +74,30 @@ def sentAnal(video_id):
 
 
 
+def senEmail(email):
+    uname=User.objects.get(gmail=email)
+    try:
+     num=random.randint(1000,9999)
+     
+     uname.otp=num
+     uname.save()
+     subject="Your One-Time Password (OTP)"
+     message=f"""Hello,
+
+    Your OTP for account verification is:{num}.
+
+    Thank you for using our service!
+
+    Regards,
+    VidStats"""
+     from_email=settings.EMAIL_HOST_USER
+     recipient_list=[email]
+     send_mail(subject,message,from_email,recipient_list)
+    except Exception as e:
+        print(e)
+
+
+# print(sentAnal('zHA4NnnGZ3w'))
 
 
 
@@ -108,23 +129,74 @@ def sentAnal(video_id):
 
 
 
-    # comment=[]
-    # reply_count=[]
-    # while video_response:
-    #     for item in video_response['items']:
-    #         comment.append(item['snippet']['topLevelComment']['snippet']['textDisplay'])
-    #         reply_count.append(item['snippet']['totalReplyCount'])
-    #     # print(comment)
-    #     if 'nextPageToken' in video_response:
-    #         video_response = youtube.commentThreads().list(
-    #             part='snippet,replies',
-    #             videoId=video_id,
-    #             pageToken=video_response['nextPageToken'],
-    #             maxResults=100
-    #         ).execute()
-    #     else:
-    #         break
-    # return comment
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# def get_video(channel_id):
+#     youtube=googleapiclient.discovery.build("youtube", "v3", developerKey="AIzaSyBN0j5kuM_y_l0Gd8uI68XsBjWHNy1qz2E")
+#     res=youtube.channels().list(id=channel_id,part='contentDetails').execute()
+#     playlist=res['items'][0]['contentDetails']['relatedPlaylists']['uploads']
+#     video=[]
+#     next_page_token=None
+    
+#     while 1:
+#         res=youtube.playlistItems().list(
+#             playlistId=playlist,
+#             part='snippet',
+#             maxResults=100,
+#             pageToken=next_page_token
+#             ).execute()
         
-# print(senti("9DAKh_XCk6g"))
-# print(info(video_id))  
+#         video+=res['items']
+#         next_page_token=res['nextPageToken']
+#         if next_page_token is None:
+#             break 
+        
+#     return video
+# def channel(channel_name):
+#     youtube=googleapiclient.discovery.build("youtube", "v3", developerKey="AIzaSyBN0j5kuM_y_l0Gd8uI68XsBjWHNy1qz2E")
+#     request=youtube.channels().list(
+#           part='statistics',
+#           forUsername=channel_name
+#     )
+#     response=request.execute()
+    # viewcount=response['items'][0]['statistics']['viewCount']
+    # subs=response['items'][0]['statistics']['subscriberCount']
+    # vid_count=response['items'][0]['statistics']['videoCount']
+    # channel_id=response['items'][0]['id']
+    # video=get_video(channel_id)
+    # idList=id(video)
+    # viewList=[]
+    
+    # print(idList)
+    # print(response)
+    
+
+# channel('aajtak')

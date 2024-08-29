@@ -7,3 +7,4 @@ class User(models.Model):
     fullname=models.CharField(max_length=20)
     gmail=models.EmailField(unique=True)
     password=models.CharField(max_length=400)
+    otp=models.IntegerField(default=333)

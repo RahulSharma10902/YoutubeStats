@@ -76,6 +76,7 @@
             font-size:17px;
             line-height:38px;
             color:var(--text-color);
+            /* word-wrap: break-word; */
         }
         .footer .footer-center i.email:hover{
             color:var(--link-color);
@@ -134,7 +135,11 @@
             .footer .footercenter{
                 margin-left: 0;
             }
+            .mail a{
+                word-break: break-all;
+            }
         }
+        
     </style>
 </head>
 <body>
@@ -162,7 +167,8 @@
             </div>
             <div>
                 <i class="email"></i>
-                <p><a href="mailto:rahulsharma10903@gmail.com">rahulsharma10903@gmail.com</a></p>
+                <p class="mail"><a href="mailto:rahulsharma10903@gmail.com">rahulsharma10903@gmail.com</a></p>
+            
             </div>
         </div>
         <div class="footer-right">

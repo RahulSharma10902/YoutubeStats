@@ -28,5 +28,11 @@ urlpatterns = [
     path('stats/',stats),
     path('sentiment/',sentiment),
     path('signup/',signup),
-    path('logout/',logout)
+    path('logout/',logout),
+    path('profile/',profile),
+    path('update/',update),
+    path('otp/',otp),
+    path('otpverification/',otp_verification),
+    path('forgot/',forgot_password),
+    path('forget/',forgot)
 ]
