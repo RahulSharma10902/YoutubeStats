@@ -34,5 +34,7 @@ urlpatterns = [
     path('otp/',otp),
     path('otpverification/',otp_verification),
     path('forgot/',forgot_password),
-    path('forget/',forgot)
+    path('forget/',forgot),
+    path('compare/',compare),
+    path('compareform/',compareForm)
 ]

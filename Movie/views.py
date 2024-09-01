@@ -43,7 +43,6 @@ def stats(request):
         global video_id
         video_id=(str)(request.GET.get('video_id'))
         list=info(video_id)
-        print(list)
         context={'info':list}
         return render(request,'Stats.html',context) 
     else:
@@ -193,3 +192,16 @@ def otp(request):
     return render(request,'OtpVerification.html',{'parent':'Sign-Up'})
 
 
+def compare(request):
+    if request.method=='POST':
+        video1=request.POST.get('video_id1')
+        video2=request.POST.get('video_id2')
+        list1=info(video1)
+        list2=info(video2)
+        return render(request,'compare.html',{'video1':list1,'video2':list2})
+
+
+    return render(request,'compare.html')
+
+def compareForm(request):
+    return render(request,'compareform.html')

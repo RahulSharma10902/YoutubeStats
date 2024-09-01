@@ -24,128 +24,188 @@
       font-family: 'Inter',sans-serif;
       text-decoration: none;
     }
-    body{
-      background-color: var(--background-color);
-    }
-    .header-content{
-      height:8vh;
-      max-width: 1280px;
-      margin:0 auto;
+    header{
+      max-width:1280px;
+      height:10%;
       display: flex;
-      justify-content:space-around;
       align-items: center;
-      padding: 1rem;
+      justify-content:space-between;
+      padding:14px 100px;
+      margin-bottom: 3rem;
+    }
+    #button{
+      display: block;
+      padding:10px 10px;
+      background-color:var(--primary-color);
+      border-radius:0.23rem;
+    }
+    #button:hover{
+        background-color: var(--link-color);
     }
     .logo{
       display: flex;
-      align-items: center;  
+      align-items: center;
       justify-content: center;
-      font-size: 2rem;
-      font-weight:bold;
-      color:var(--text-color);
       text-decoration: none;
-      margin-bottom: 15px;
     }
-    .logo-icon{
-      height:2rem;
-      width:2rem;
+    #logo-img{
+      height:40px;
+      width:40px;
     }
-    .logo-text{
+    #logo-style{
+      color:rgb(53, 53, 233);
+    }
+    #logo-head{
       font-size: 2rem;
+      color:#333333;
+      font-weight: bold;
     }
-    .navbar{
+    .hamburger{
       display: none;
-      gap:1.5rem;
     }
-    .nav-link{
-      color:#718096;
-      font-size: 1.125rem;
-      font-weight:600;
-      transform: color 0.1s;
+  
+    .nav-bar{
+      width:70%;
     }
-    .nav-link:hover{
-      color:var(--link-color)
+    
+    .nav-bar ul{
+      display: flex;
+      list-style-type: none;
+      justify-content: space-around;
+      align-items: center;
+      width:100%;
+    }
+    .active{
+      color:var(--dark-gray);
+      font-size: 20px;
+      font-weight: 600;
+      transition: 0.3s;
+      margin:0 5px;
     }
     .login{
-      border:none;
-      display: none;
-      border-radius: 0.375rem;
-      background-color: var(--primary-color);
       color:var(--background-color);
-      transform: all 0.1s;
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
+      font-size: 20px;
       font-weight: 600;
-      width:5%;
-      margin-left: 70px;
-      gap:0.625rem;
+      transition: 0.3s;
+      margin:0 5px;
     }
-    .login:hover{
-      background-color: #5254f8;
-      
+   
+    .active:hover{
+      color:var(--link-color)
     }
-    @media  screen and (min-width:768px) {
-      .navbar{
+    @media only screen and (max-width:768px){
+      header{
+        padding:0 50px;
+      }
+    }
+    @media only screen and (max-width:768px){
+      .hamburger{
+        display: block;
+        cursor: pointer;
+      }
+      .header{
+        margin-top:20px;
+      }
+      .hamburger .line{
+        width:30px;
+        height:3px;
+        background: black;
+        margin:6px 0;
+      }
+      .nav-bar{
+        height:0;
+        position:absolute;
+        top:80px;
+        left:0;
+        right:0;
+        width:100vw;
+        background-color:black;
+        transition: 0.3s;
+        overflow: hidden;
+      }
+      .nav-bar.active{
+      height: 250px;
+    }
+      .nav-bar ul{
         display: flex;
-    }
-  }
-    @media screen and (min-width:768px){
-      .login{
-        display: block;
+        flex-direction: column;
+        width: fit-content;
+        margin: 30px auto;
+        text-align: center;
+        transition: 0.2s;
+        gap:1rem;
+        opacity: 0;
       }
-    }
-    .menu-button{
-      display: none;
-      border:none;
-      border-radius: 0.375rem;
-      font-size: 1rem;
-      font-weight: 600;
-      background-color:var(--background-color);
-      padding:  0.5rem 1rem;
-    }
-    @media  screen and (max-width:768px) {
-      .menu-button{
-        display: block;
+      .nav-bar.active ul{
+        opacity:1;
+      }
+      .nav-bar ul li a{
+        margin-bottom: 12px;
+      }
+      .header.active{
+        margin-bottom: 20rem;
+      }
+      .active{
+        color:white;
+      }
+      .active:hover{
+        color:var(--link-color)
       }
     }
     
-      
-    
-  </style>
+</style>
 </head>
 <body>
-  <div class="header">
-
-    <header class="header-content">
-
-      <a href="http://127.0.0.1:8000/" class="logo">
-        <img src="{% static 'logo.png' %}" alt="" class="logo-icon"/>
-        <span class="logo-text">VidStats</span>
-      </a>
-
-      <nav class="navbar">
-        <a class="nav-link" href="/home/">HOME</a>
-        <a class="nav-link" href="/profile/">PROFILE</a>
-        <a class="nav-link" href="/stats/">VIDEO</a>
-        <a class="nav-link" href="">CHANNEL</a>
-        <a class="nav-link" href="/Contact/">CONTACT</a>
-      </nav>
-     {% if request.session.user %}
-      <a href="/logout/" class="login">
-        Log-Out
-      </a>
-      {% else %}
-      <a href="/login/" class="login">
-        Log-In
-      </a>
-      {% endif %}
-      <button type="button" class="menu-button">
-        <img src="{% static 'hamburger.png' %}" alt="menuButton" class="menu-icon"/>
-      </button>
-
-    </header>
-
-  </div>
+  <header class="header">
+    <a href='/' class="logo">
+      <img src="{% static 'logo.png'%}" alt="" id="logo-img">
+      <h3 id="logo-head">Vid<span id="logo-style">Stats</span></h3>
+    </a>
+    <div class="hamburger">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+    <div class="nav-bar">
+      <ul>
+        <li>
+          <a href="/home/" class="active" >Home</a>
+        </li>
+        <li>
+          <a href="/profile/" class="active">Profile</a>
+        </li>
+        <li>
+          <a href="/stats/" class="active">Video</a>
+        </li>
+        <li>
+          <a href="/Contact/" class="active">Contact</a>
+        </li>
+        <li id="button">
+          {% if request.session.user %}
+              <a href="/logout/" class="login" >
+                Log-Out
+              </a>
+              {% else %}
+              <a href="/login/" class="login">
+                Log-In
+              </a>
+          {% endif %}
+        </li>
+      </ul>
+    </div>
+  </header>
+  <script>
+    hamburger=document.querySelector(".hamburger");
+    hamburger.onclick=function(){
+      header=document.querySelector(".header")
+      header.classList.toggle("active");
+      navBar=document.querySelector(".nav-bar");
+      navBar.classList.toggle("active");
+    }
+  </script>
   
 </body>
 </html>
+
+
+

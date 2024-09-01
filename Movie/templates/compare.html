@@ -1,0 +1,229 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StatsVid</title>
+    <link rel="shortcut icon" href="{% static 'Channel.png' %}" type="image/x-icon">
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+   
+          :root{
+        --primary-color:#6366F1;
+        --accent_color:#3f83f8;
+        --text-color:#333333;
+        --link-color:#2563eb;
+        --background-color:#ffffff;
+        --light-gray:#f0f0f0;
+        --gray:#808080;
+        --dark-gray:#555;
+        }
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        .container{
+            height:90vh;
+            max-width:100vw;
+           
+        }
+        .compare{
+            width:100%;
+            height:100%;
+            display:grid;
+            grid-auto-flow: column;
+            padding: 2rem;
+            /* grid-template-columns: repeat(2,1fr); */
+            gap:2rem;
+        }
+        .video{
+            background:rgb(34, 32, 32);
+            border-radius: .5rem;
+        }
+
+        @media screen and (max-width:768px){
+            .compare{
+                grid-template-rows: repeat(2,1fr);
+            }
+        }
+        table{
+            width:100%;
+            height:100%;
+            padding: 1rem;
+        }
+        .row-heading{
+            text-align: left;
+            width: 9rem;
+            /* papx; */
+            font-size: 1.25rem;
+            font-weight: 600;
+            color:white
+            
+        }
+        #thumbnail img{
+            width:70%;
+            height:60%;
+        }
+        .row-item{
+            color:white;
+            font-size: 1.35rem;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        table tr:hover{
+            background-color: rgb(56, 55, 55);
+        }
+        table tr td{
+            border-radius: 8px;
+        }
+        .dis-cont{
+            height:90vh;
+            max-width:100vw;
+        }
+        .dis-comp{
+            width:100%;
+            height:100%;
+            display:grid;
+            grid-auto-flow: column;
+            padding: 2rem;
+            gap:2rem;
+        }
+        @media screen and (max-width:810px){
+            .dis-comp{
+                grid-template-rows: repeat(2,1fr);
+            }
+            .container{
+                margin-bottom: 30rem;
+            }
+            .dis-cont{
+                margin-bottom: 60rem;
+            }
+            .dis-video{
+                margin-bottom: 10rem;
+            }
+        }
+        .dis-video{
+            background:rgb(34, 32, 32);
+            border-radius: .5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding:1rem;
+            height:100%;
+            /* overflow: hidden; */
+        }
+        .dis-video h3{
+            color:white;
+        }
+        .tags{
+            height:60%;
+            width:80%;
+            padding: 1rem;
+            color:white;
+            font-weight: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+        }
+        h4{
+            color:white;
+            font-size: 24px;
+            text-align: center;
+        }
+        hr{
+            background-color: white;
+            height: 3px;
+        }
+
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="container">
+        <div class="compare">
+            <div class="video">
+                <table>
+                    <tr>
+                        <td  class="row-heading">Thumbnail</td>
+                        <td id="thumbnail"><img src="{{video1.thumbnail}}" alt=""></td>
+                    </tr>
+                    <tr>
+                        <td class="row-heading">Title</td>
+                        <td class="row-item">{{video1.title}}</td>
+                    </tr>
+                    <tr>
+                        <td class="row-heading">Channel Name</td>
+                        <td class="row-item">{{video1.channel_name}}</td>
+                    </tr>
+                    <tr>
+                        <td class="row-heading">Views</td>
+                        <td class="row-item">{{video1.view_count}}</td>
+                    </tr>
+                    <tr>
+                        <td class="row-heading">Likes</td>
+                        <td class="row-item">{{video1.like_count}}</td>
+                    </tr>
+                    <tr>
+                        <td class="row-heading">Comment</td>
+                        <td class="row-item">{{video1.comment_count}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="video">
+                <table>
+                    <tr>
+                        <td  class="row-heading">Thumbnail</td>
+                        <td id="thumbnail"><img src="{{video2.thumbnail}}" alt=""></td>
+                    </tr>
+                    <tr>
+                        <td class="row-heading">Title</td>
+                        <td class="row-item">{{video2.title}}</td>
+                    </tr>
+                    <tr>
+                        <td class="row-heading">Channel Name</td>
+                        <td class="row-item">{{video2.channel_name}}</td>
+                    </tr>
+                    <tr>
+                        <td class="row-heading">Views</td>
+                        <td class="row-item">{{video2.view_count}}</td>
+                    </tr>
+                    <tr>
+                        <td class="row-heading">Likes</td>
+                        <td class="row-item">{{video2.like_count}}</td>
+                    </tr>
+                    <tr>
+                        <td class="row-heading">Comment</td>
+                        <td class="row-item">{{video2.comment_count}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="dis-cont">
+        <div class="dis-comp">
+            <div class="dis-video">
+                    <h3>{{video1.title}}</h3>
+                    <hr>
+                    <div class="tags">
+                        <h4>Tags</h4>
+                        <p>{{video1.tags}}</p>
+                    </div>
+            </div>
+            <div class="dis-video">
+                    <h3>{{video2.title}}</h3>
+                    <hr>
+                    <div class="tags">
+                        <h4>Tags</h4>
+                        <p>{{video2.tags}}</p>
+                    </div>
+            </div>
+        </div>
+    </div>
+        {% include 'footer.html' %}
+</body>
+</html>

@@ -16,6 +16,7 @@ def get_video_details(video_id):
 def info(video_id):
     try:
         video_info = get_video_details(video_id)
+        # print(video_info)
         if 'items' in video_info and video_info['items']:
             item=video_info['items'][0]
             stats=item['statistics']
@@ -26,14 +27,17 @@ def info(video_id):
                 'view_count':stats['viewCount'],
                 'comment_count': stats["commentCount"],
                 'channel_id' : item['snippet']['channelId'],
-                'channel_name' : item['snippet']['channelTitle']
+                'channel_name' : item['snippet']['channelTitle'],
+                'tags':item['snippet']['tags'],
+                'discription':item['snippet']['description'][:2000],
+                'thumbnail':item['snippet']['thumbnails']['medium']['url']
             }
             return vid_data
         else:
             return "Video not found."
     except Exception as e:
         return f"Error fetching video details: {str(e)}"
-
+# print(info("vxJhcKM4Ggc"))
 def senti(video_id):
     try:    
         youtube =googleapiclient.discovery.build("youtube", "v3", developerKey="AIzaSyBN0j5kuM_y_l0Gd8uI68XsBjWHNy1qz2E")
@@ -97,7 +101,7 @@ def senEmail(email):
         print(e)
 
 
-# print(sentAnal('zHA4NnnGZ3w'))
+
 
 
 
