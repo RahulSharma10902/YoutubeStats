@@ -1,0 +1,176 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VidStats</title>
+    <link rel="shortcut icon" href="{% static 'Channel.png' %}" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    :root{
+      --primary-color:#6366F1;
+      --accent_color:#3f83f8;
+      --text-color:#333333;
+      --link-color:#2563eb;
+      --background-color:#ffffff;
+      --light-gray:#f0f0f0;
+      --gray:#808080;
+      --dark-gray:#555;
+    }
+        .stats-cont{
+            padding: 2rem ;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .stats-card{
+            width:80%;
+            height:90%;
+            border:none;
+            box-shadow: 0px 8px 16px var(--dark-gray);
+            text-align: center;
+            padding:2rem;
+            border-radius: 1rem;
+            color:var(--primary-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .stats-card h2{
+            margin:2rem 0;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .subheading{
+            font-size: 20px;
+            color:var(--text-color);
+            font-weight: normal;
+        }
+        .row1{
+            height:50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+             margin:1rem;
+        }
+        .box{
+            width:20%;
+            height:70%;
+            /* border:2px solid red; */
+            border-radius: 1rem;
+            box-shadow: 0px 4px 8px var(--gray);
+            display: flex;
+            flex-direction: column;
+            color: var(--background-color);
+            padding:1rem;
+            font-size:1.2rem;
+            font-weight: bold;
+            overflow-wrap: break-word;
+            overflow: scroll;
+        }
+        .box-val{
+            margin-top: 1rem;
+            font-size: 2rem;
+        }
+        .box-text{
+            margin-bottom: .78rem;
+        }
+        #box1{
+            background-color: #0e4702;
+        }
+        #box2{
+            background-color: rgb(173, 65, 46);
+        }
+        #box3{
+            background-color: rgb(33, 100, 155);
+        }
+        
+        @media screen and (max-width:768px){
+            .row1{
+                width:50%;
+                height:100%;
+                display: flex;
+                flex-direction: column; 
+                padding: 1rem ;
+            }
+            .box{
+                width:80%;
+                margin-top: 2rem;
+                height:25%;
+                font-size:1.1rem;
+            }
+        }
+        Button{
+            height:2rem;
+            width: 7rem;
+            background-color: var(--accent_color);
+            align-content: center;
+            border-radius: .2rem;
+            cursor:pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        Button:hover{
+            background-color: var(--link-color);
+            
+        }
+        #tttt{
+            
+            background-color: var(--accent_color);
+            /* align-items: center; */
+            border-radius: .65rem;
+            
+            margin-top: 1rem;
+        }
+        hr{
+            margin:3px 0;
+        }
+        .sentiment{
+            margin-top: 1rem ;
+            color: var(--text-color);
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .sentiment a{
+            color:var(--accent_color);
+        }
+        .sentiment a:hover{
+            color:var(--link-color
+            )
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="stats-cont">
+        <div class="stats-card">
+            <h2>Comment Sentiment Analysis</h2>
+            <p class="subheading">This Sentiment Analysis Is Based On 100 Comments</p>
+            <div class="row1">
+                <div class="box" id="box1">
+                    <p class="box-text">Positive Comments</p>
+                    <hr>
+                    <span class="box-val">{{sent.posi}}</span>
+                </div>
+                <div class="box" id="box2">
+                    <p class="box-text">Negitive Comments</p>
+                    <hr>
+                    <span class="box-val">{{sent.negi}}</span>
+                </div>
+                <div class="box" id="box3">
+                    <p class="box-text">Neutral Comments</p>
+                    <hr>
+                    <span class="box-val">{{sent.neut}}</span>
+                </div>
+            </div>
+           
+            <a href="/home/" class="tttt"><Button >Back</Button></a>
+        </div>
+        
+    </div>
+    {%include 'footer.html' %}
+</body>
+</html>

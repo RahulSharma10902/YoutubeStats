@@ -1,0 +1,262 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VidStats</title>
+    <link rel="shortcut icon" href="{% static 'Channel.png' %}" type="image/x-icon">
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+   
+        :root{
+      --primary-color:#6366F1;
+      --accent_color:#3f83f8;
+      --text-color:#333333;
+      --link-color:#2563eb;
+      --background-color:#ffffff;
+      --light-gray:#f0f0f0;
+      --gray:#808080;
+      --dark-gray:#555;
+    }
+    *{
+      margin:0;
+      padding:0;
+      font-family: 'Inter',sans-serif;
+      text-decoration: none;
+    }
+        .main-section{
+            max-width: 1280px;
+            display:flex;
+            flex-direction: column;
+            gap:2rem;
+            padding:0.6rem;
+            align-items: center;
+            margin:0 auto;
+        }
+        .content-left{
+            text-align: center;
+            animation: slideFromLeft 1s ease forwards;
+            opacity:0;
+        }
+        @keyframes slideFromLeft{
+            0%{
+                opacity:0%;
+                transform:translateX(-100%);
+            }
+            100%{
+                opacity:1;
+                transform: translateX(0);
+            }
+        }
+        .section-label{
+            font-size: 1.15rem;
+            font-weight: 600;
+            color:var(--primary-color);
+        }
+        .section-title{
+            font-size: 2.3rem;
+            padding:1.1rem;
+        }
+        .section-description{
+            color:var(--gray);
+            font-size: 1.22rem;
+        }
+        
+        .img-cont{
+            text-align: center;
+            border:none;
+            border-radius: 0.625rem;
+            overflow: hidden;
+            box-shadow: 0px 8px 12px rgb(88, 88, 88);
+            height: 57vh;
+            width: 40vw;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+        }
+        @media screen and (min-width:768px){
+            .main-section{
+                flex-direction: row;
+            }
+            .content-left{
+                max-width: 50%;
+            }
+        }
+        .follow{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2rem;
+            flex-direction: column;
+            margin-bottom: 2rem;
+            padding:2rem 2rem;
+            animation: slideFromLeft 1s ease forwards;
+        }
+        .follow-grid{
+            display:flex;
+            grid-template-columns:repeat(2,1fr);
+            gap:3rem;
+            padding: 1rem;
+            background-color: var(--light-gray);
+            border-radius: 0.625rem;
+        }
+        .follow h2{
+            margin: 1rem auto;
+            font-size: 1.75rem;
+            font-weight: bold;
+        }
+        .app-logo{
+            font-size:.25rem;
+            font-weight:500;
+            color:var(--gray);
+            gap:0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .app-img{
+            height:3rem;
+        }
+        .app-logo span{
+            font-size: 1.2rem;
+        }
+        @media screen and (max-width:768px) {
+            .app-logo{
+                display: flex;
+                flex-direction: column;
+            }
+            .img-cont{
+                width:80vw;
+                height:70vh;
+            }
+            .message{
+                font-size: 14px;
+            }
+        }
+        
+        .form{
+            height:80%;
+            width:80%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+        .form-input{
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+            /* padding: 1rem; */
+        }
+        .form input{
+            width: 80%;
+            display: flex;
+            font-size: 15px;
+            font-weight: 600;
+            height:15%;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .from .bt{
+            width: 80%;
+            height:10%;
+        }
+        .sign{
+            border-radius: 0.1rem;
+            background-color: var(--primary-color);
+            color:var(--background-color);
+            transform: all 0.1s;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            width:100%;
+            margin-top:2rem;
+            gap:0.625rem;
+            box-shadow: 0px 4px 8px var(--gray);
+        }
+        .img-cont h2{
+            color:var(--text-color);
+        }
+        .sign:hover{
+            background-color: var(--link-color);
+        }
+        .message{
+            color:red;
+            font-size: 24px;
+        }
+        
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="content">
+
+        <section class="main-section">
+
+            <div class="content-left">
+                <p class="section-label">
+                    Get Stats Of Any Video Or Channel
+                </p>
+                <h1 class="section-title">
+                    Create An Account 
+                </h1>
+                <p class="section-description">
+                    VidStats provides analytics and live subscriber counts for YouTube channels.
+                     You can track progress, view related channels, and get real-time data.
+                     It helps you track YouTube channels, stats and provides AI-powered insights to boost your growth
+                </p>
+            </div>
+
+            <div class="content-right">
+
+                <div class="img-cont">
+                    <h2>Sign-Up</h2>
+                    <form action="/signup/" class="form" method="post">
+                        {% csrf_token %}
+                        <div class="form-input">
+                        <input type="text" class="username" placeholder="UserName" name="username" required>
+                        <input type="text" class="username" placeholder="Fullname" name="fulname" required>
+                        <input type="email" class="username" placeholder="Email-ID" name="email" required>
+                        <input type="password" class="password" placeholder="Password" name="password1" required>
+                        <input type="password" class="password" placeholder="Confirm Password" name="password2" required>
+                        <input type="submit" class="sign" placeholder="Sign-Up">
+                        
+                    </div>
+                    {% if messages %}
+                        {% for message in messages %}
+                         <span class="message">{{message}}</span>
+                         {% endfor %}
+                    {% endif %}
+                    <p>If You Already Have Account <a href="/login/">Click Here!</a></p>
+                        </form>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="follow">
+        <h2>Follow Us On</h2>
+        <div class="follow-grid">
+            <a href="https://www.instagram.com/rahul_bharadwaj.r/?hl=en" class="app-logo">
+                <img src="{% static 'insta.png' %}" alt="" class="app-img">
+                <span class="logo-text">Instagram</span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/rahul-sharma-6072b4268/" class="app-logo">
+                <img src="{% static 'linkedin.png' %}" alt="" class="app-img">
+                <span class="logo-text">LinkedIn</span>
+            </a>
+
+        </div>
+        
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>

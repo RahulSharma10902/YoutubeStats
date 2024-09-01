@@ -1,0 +1,218 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VidStats</title>
+    <link rel="shortcut icon" href="{% static 'Channel.png'%}" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    :root{
+      --primary-color:#6366F1;
+      --accent_color:#3f83f8;
+      --text-color:#333333;
+      --link-color:#2563eb;
+      --background-color:#ffffff;
+      --light-gray:#f0f0f0;
+      --gray:#808080;
+      --dark-gray:#555;
+    }
+        .stats-cont{
+            height:90%;
+            padding:0.5rem;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap:0.5rem;
+            margin:50px auto;
+        }
+        .stats-cont .stats-card{
+            height:90%;
+            width:70%;
+            display: grid;
+            margin:50px 50px;
+            gap:0.5rem;
+          
+        }
+        .box{
+            box-shadow:  5px 5px 10px var(--dark-gray);
+            border-radius:.3rem;
+            padding:1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap:.5rem;
+            
+        }
+        .box p{
+            color:black;
+            font-size:15px;
+            font-weight: 600;
+            text-wrap: wrap;
+        }
+        .box h2{
+            color:white;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        #channel_name{
+            background-color: rgb(29, 83, 29);
+        }
+        #channel_id{
+            background-color: rgb(44, 44, 102);
+        }
+        #video_name{
+            background-color: rgb(105, 40, 40);
+        }
+        #like_count{
+            background-color: rgb(121, 86, 23);
+        }
+        #view_count{
+            background-color: rgb(53, 73, 53);
+        }
+        #comment_count{
+            background-color: brown;
+        }
+        @media screen and (min-width:750px){
+            .stats-card{
+                grid-template-columns:repeat(3,1fr);
+                grid-template-rows: repeat(2,1fr);
+            }
+        }
+        
+        Button{
+            width:100px;
+            height:50px;
+            background-color: var(--accent_color);
+            align-content: center;
+            border-radius: .2rem;
+            cursor:pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        Button:hover{
+            background-color: var(--link-color);
+            
+        }
+        #tttt{
+            
+            background-color: var(--accent_color);
+            /* align-items: center; */
+            border-radius: .65rem;
+            
+            margin-top: 20px;
+        }
+        hr{
+            margin:3px 0;
+        }
+        .sentiment{
+            margin-top: 10px ;
+            color: var(--text-color);
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .sentiment a{
+            color:var(--accent_color);
+        }
+        .sentiment a:hover{
+            color:var(--link-color
+            )
+        }
+        .content{
+            height:80vh;
+            width:80vw;
+            display: grid;
+            /* grid-template-columns:repeat(2,1fr) ; */
+            grid-auto-flow: column;
+            margin:2rem 2rem;
+            padding:2rem 1rem;
+            gap:2rem;
+        }
+        .tags{
+            background-color: rgb(236, 236, 182);
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 0.5rem;
+        }
+        .discription{
+            background-color: rgb(236,236,182);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.5rem;
+        }
+        .content div h3{
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+        @media screen and (max-width:860px) {
+            .content{
+                grid-template-rows: repeat(2,1fr);
+                grid-auto-flow: column;
+                margin-bottom:70rem;
+            }
+        }
+        #thumbnail{
+            height:200px;
+            width:200px;
+        }
+        .content div p{
+            font-size: 1rem;
+            color:#0c0c0c;
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="stats-cont">
+        <h1>Video Stats</h1> 
+        <img src="{{info.thumbnail}}" alt="" id="thumbnail">
+            <div class="stats-card">
+            <div class="box" id="channel_name">
+                <h2>Channel Name</h2>
+                <p>{{info.channel_name}}</p>
+            </div>
+            <div class="box" id="channel_id">
+                <h2>Channel ID</h2>
+                <p>{{info.channel_id}}</p>
+            </div>
+            <div class="box" id="video_name">
+                <h2>Video Name</h2>
+                <p>{{info.title}}</p>
+            </div>
+            <div class="box" id="comment_count">
+                <h2>Comment Count</h2>
+                <p>{{info.comment_count}}</p>
+            </div>
+            <div class="box" id="view_count">
+                <h2>View Count</h2>
+                <p>{{info.view_count}}</p>
+            </div>
+            <div class="box" id="like_count">
+                <h2>Like Count</h2>
+                <p>{{info.like_count}}</p>
+            </div>
+    
+        </div>
+        <a href="/home/" class="tttt"><Button >Back</Button></a>
+            <p class="sentiment">To Get Sentiment Analysis <a href="/sentiment/">Click Here!</a></p>
+    </div>
+    <div class="content">
+        <div class="tags">
+            <h3>Tags Used</h3>
+            <p>{{info.tags}}</p>
+            <hr>
+        </div>
+        <div class="discription">
+            <h3>Video Discription</h3>
+            <p>{{info.discription}}</p>
+        </div>
+    </div>
+    {%include 'footer.html' %}
+</body>
+</html>

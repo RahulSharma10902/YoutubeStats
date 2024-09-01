@@ -1,0 +1,255 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stats</title>
+    <link rel="shortcut icon" href="{% static 'Channel.png' %}" type="image/x-icon">
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+   
+        :root{
+      --primary-color:#6366F1;
+      --accent_color:#3f83f8;
+      --text-color:#333333;
+      --link-color:#2563eb;
+      --background-color:#ffffff;
+      --light-gray:#f0f0f0;
+      --gray:#808080;
+      --dark-gray:#555;
+    }
+    *{
+      margin:0;
+      padding:0;
+      font-family: 'Inter',sans-serif;
+      text-decoration: none;
+    }
+        .main-section{
+            max-width:100vw;
+            display:flex;
+            /* flex-direction: column; */
+            gap:2rem;
+            padding:2rem;
+            align-items: center;
+            justify-content: center;
+            margin:0 auto;
+        }
+        .content-left{
+            text-align: center;
+            animation: slideFromLeft 1s ease forwards;
+            width: 50vw;
+            height:100%;
+        }
+        @keyframes slideFromLeft{
+            0%{
+                opacity:0%;
+                transform:translateX(-100%);
+            }
+            100%{
+                opacity:1;
+                transform: translateX(0);
+            }
+        }
+        .section-label{
+            font-size: 1.15rem;
+            font-weight: 600;
+            color:var(--primary-color);
+        }
+        .section-title{
+            font-size: 2.1rem;
+            padding:1.1rem;
+            color:blue;
+        }
+        .content-left span{
+            color:var(--text-color);
+            font-size: 1.6rem;
+        }
+        .section-description{
+            color:var(--text-color);
+            font-size: 1.1rem;
+            max-width: 80%;
+            word-wrap: normal;
+            margin-left: 5rem;
+            margin-top: 1rem ;
+        }
+        .button-group{
+            display: flex;
+            gap:2rem;
+            padding: 1rem;
+            margin-top:1rem;
+            align-items: center;
+            justify-content: center;
+        }
+        .sign:hover{
+            background-color: var(--link-color);
+        }
+        .content-right{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50vw;
+            height: 100%;
+            
+        }
+        
+        .img-cont{
+            border:none;
+            border-radius: 0.625rem;
+            overflow: hidden;
+            box-shadow: 0px 8px 12px rgb(88, 88, 88);
+            height: 57vh;
+            width:50vw;
+            text-align: center;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--light-gray);
+        }
+        @media screen and (max-width:768px){
+            .main-section{
+                flex-direction: column;
+            }
+            .content-left{
+                width: 80%;
+            }
+            .content-right{
+                width:80%;
+            }
+        }
+        .follow{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2rem;
+            flex-direction: column;
+            margin-bottom: 2rem;
+            padding:2rem 2rem;
+            animation: slideFromLeft 1s ease forwards;
+        }
+        .follow-grid{
+            display:flex;
+            grid-template-columns:repeat(2,1fr);
+            gap:3rem;
+            padding: 1rem;
+            background-color: var(--light-gray);
+            border-radius: 0.625rem;
+        }
+        .follow h2{
+            margin-bottom: 1rem auto;
+            font-size: 1.75rem;
+            font-weight: bold;
+        }
+        .app-logo{
+            font-size:.25rem;
+            font-weight:500;
+            color:var(--gray);
+            gap:0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .app-img{
+            height:3rem;
+        }
+        .app-logo span{
+            font-size: 1.2rem;
+        }
+        @media screen and (max-width:768px) {
+            .app-logo{
+                display: flex;
+                flex-direction: column;
+            }
+            
+        }
+        .sign{
+            background-color: var(--accent_color);
+        }
+
+        .logo-text
+        {
+            font-size: 0.75rem;
+        }
+        .form{
+            height:100%;
+            width:100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+        .form input{
+            width: 80%;
+            display: flex;
+            height:15%;
+            font-size: 1rem;
+            align-items: center;
+            font-weight: 600;
+            margin-bottom:2rem;
+        }
+        
+        
+        .img-cont h2{
+            color:var(--text-color);
+        }
+        .sign:hover{
+            background-color: var(--link-color);
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="content">
+
+        <section class="main-section">
+
+            <div class="content-left">
+                <h1 class="section-title">
+                    To Get Video Stats
+                </h1>
+                <span>Enter Video-ID 
+                    Text After '=' In URL</span>
+                <p class="section-description">
+                    Uncover the secrets behind successful channels, all while sipping 
+                    your favorite beverage. Cheers to data-driven creativity! 🚀🎥"
+                </p>
+            </div>
+
+            <div class="content-right">
+
+                <div class="img-cont">
+                    <img src="{% static 'video.png' %}" alt="">
+                    <h2>Enter  Video-ID</h2>
+                    <form action="/stats/" class="form" >
+                        {%csrf_token%}
+
+                        <input type="text" class="username" placeholder="Video-ID" name="video_id">
+                        <input type="submit" class="sign" value="Submit">
+                        <p>For Comparing Videos <a href="/compareform/">Click Here!</a></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+</div>
+
+    <div class="follow">
+        <h2>Follow Us On</h2>
+        <div class="follow-grid">
+            <a href="https://www.instagram.com/rahul_bharadwaj.r/?hl=en" class="app-logo">
+                <img src="{% static 'insta.png' %}" alt="" class="app-img">
+                <span class="logo-text">Instagram</span>
+            </a>
+
+            <a href="" class="app-logo">
+                <img src="{% static 'linkedin.png' %}" alt="" class="app-img">
+                <span class="logo-text">LinkedIn</span>
+            </a>
+
+        </div>
+        
+    </div>
+    {%include 'footer.html' %}
+</body>
+</html>
