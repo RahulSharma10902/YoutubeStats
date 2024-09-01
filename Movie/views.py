@@ -101,7 +101,7 @@ def signup(request):
         
 
 def contact(request):
-    return render(request,'contact.html')
+    return render(request,'Contact.html')
 
 
 def profile(request):
@@ -199,8 +199,6 @@ def compare(request):
         list1=info(video1)
         list2=info(video2)
         return render(request,'compare.html',{'video1':list1,'video2':list2})
-
-
     return render(request,'compare.html')
 
 def compareForm(request):
