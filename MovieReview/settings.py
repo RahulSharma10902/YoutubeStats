@@ -21,12 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#"django-insecure-5hnq96-gp3a_f12#c3ddg%me)l2#b$)lz947*pzv2e4g!epw3)"
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = "django-insecure-5hnq96-gp3a_f12#c3ddg%me)l2#b$)lz947*pzv2e4g!epw3)"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG","False").lower()=="true"
-ALLOWED_HOSTS=os.environ.get("ALLOWED_HOSTS").split(" ")
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -83,7 +81,7 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-database_url=os.environ.get("DATABASE_URL")
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
