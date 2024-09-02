@@ -38,6 +38,7 @@ def info(video_id):
     except Exception as e:
         return f"Error fetching video details: {str(e)}"
 # print(info("C-6Dhsi_Yb0"))
+    
 def senti(video_id):
     try:    
         youtube =googleapiclient.discovery.build("youtube", "v3", developerKey="AIzaSyBN0j5kuM_y_l0Gd8uI68XsBjWHNy1qz2E")
