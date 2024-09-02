@@ -2,8 +2,8 @@ from django.conf import settings
 from textblob import TextBlob
 import googleapiclient.discovery
 from django.core.mail import send_mail
-# from MovieReview import settings
-# from .models import User
+from MovieReview import settings
+from .models import User
 import random
 
 def get_video_details(video_id):
@@ -37,7 +37,7 @@ def info(video_id):
             return "Video not found."
     except Exception as e:
         return f"Error fetching video details: {str(e)}"
-print(info("C-6Dhsi_Yb0"))
+# print(info("C-6Dhsi_Yb0"))
 def senti(video_id):
     try:    
         youtube =googleapiclient.discovery.build("youtube", "v3", developerKey="AIzaSyBN0j5kuM_y_l0Gd8uI68XsBjWHNy1qz2E")
